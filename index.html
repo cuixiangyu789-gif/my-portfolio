@@ -136,6 +136,7 @@ nav{
   display:flex;align-items:center;justify-content:center;
 }
 .about-photo span{color:var(--grey);font-size:13px;font-weight:300}
+.about-photo img{width:100%;height:100%;object-fit:cover;border-radius:28px;display:block}
 .about-text p{
   font-size:17px;color:var(--grey);
   line-height:1.88;font-weight:300;
@@ -415,7 +416,7 @@ footer{
   <div class="block-in">
     <div class="about-wrap rv">
       <div class="about-photo">
-        <span>个人照片</span>
+        <img src="images/me.jpg" alt="崔相宇">
       </div>
       <div class="about-text">
         <p>
@@ -484,40 +485,36 @@ footer{
       <button class="pf-btn" onclick="pf('dy',this)">抖音运营</button>
       <button class="pf-btn" onclick="pf('ai',this)">AI视频</button>
       <button class="pf-btn" onclick="pf('og',this)">原创内容</button>
+      <button class="pf-btn" onclick="pf('be',this)">B端客户</button>
     </div>
 
     <div class="pf-grid rv" id="pfGrid">
 
-      <!-- ✦ 方式一：封面图 + 点击弹窗播放本地视频 -->
-      <div class="pf-item" data-c="dy" onclick="openVideo('local','videos/demo1.mp4')">
+      <!-- ✦ 得物 品牌合作（hover预览 + 点击弹窗播放）-->
+      <div class="pf-item" data-c="be" onclick="openVideo('local','videos/dewu.mp4')">
         <div class="pf-thumb">
-          <!-- 把 src 换成你的封面截图路径 -->
-          <img src="" alt="">
+          <video src="videos/dewu.mp4" muted loop playsinline preload="none"></video>
           <span class="pf-num">01</span>
           <div class="pf-play"><svg width="18" height="18" fill="white" viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21"/></svg></div>
         </div>
         <div class="pf-bd">
-          <div class="pf-cat">抖音运营</div>
-          <div class="pf-title">动漫IP账号独立运营</div>
-          <div class="pf-desc">头部动漫IP抖音号全链路运营，建立标准化内容生产流程与数据驱动选题机制</div>
-          <div class="pf-stats"><span class="pf-stat">粉丝 <b>100w+</b></span><span class="pf-stat">峰值 <b>500w播放</b></span></div>
+          <div class="pf-cat">B端客户</div>
+          <div class="pf-title">得物 · 品牌合作</div>
+          <div class="pf-desc">为得物策划制作的品牌短视频，基于客户 brief 提炼传播诉求，适配其业务场景。</div>
         </div>
       </div>
 
-      <!-- ✦ 方式二：封面图 + hover自动预览（短视频悬停预览效果） -->
-      <div class="pf-item" data-c="ai" onclick="openVideo('local','videos/demo2.mp4')">
+      <!-- ✦ 爱彼迎 品牌合作（hover预览 + 点击弹窗播放）-->
+      <div class="pf-item" data-c="be" onclick="openVideo('local','videos/aibiying.mp4')">
         <div class="pf-thumb">
-          <!-- img = 静态封面，video = hover时自动播放的预览 -->
-          <img src="" alt="">
-          <video src="" muted loop playsinline preload="none"></video>
+          <video src="videos/aibiying.mp4" muted loop playsinline preload="none"></video>
           <span class="pf-num">02</span>
           <div class="pf-play"><svg width="18" height="18" fill="white" viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21"/></svg></div>
         </div>
         <div class="pf-bd">
-          <div class="pf-cat">AI视频</div>
-          <div class="pf-title">AI自动化视频生产管线</div>
-          <div class="pf-desc">分镜表→AI视频生成→自动剪辑合成，整合 Veo、Seedance 模型的完整 pipeline</div>
-          <div class="pf-stats"><span class="pf-stat">效率 <b>5x</b></span><span class="pf-stat">成本 <b>-60%</b></span></div>
+          <div class="pf-cat">B端客户</div>
+          <div class="pf-title">爱彼迎 · 品牌合作</div>
+          <div class="pf-desc">为爱彼迎策划制作的品牌短视频，结合品牌调性与平台传播规律完成创作。</div>
         </div>
       </div>
 
