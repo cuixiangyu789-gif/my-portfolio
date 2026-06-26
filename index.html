@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>【你的名字】</title>
+<title>崔翔宇</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@200;300;400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -208,11 +208,61 @@ nav{
   aspect-ratio:16/10;
   background:linear-gradient(135deg,#1a1a1a,#2a2a2a);
   display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
 }
+.pf-thumb img,.pf-thumb video{
+  width:100%;height:100%;object-fit:cover;
+  position:absolute;inset:0;
+}
+.pf-thumb img[src=""],.pf-thumb video[src=""]{display:none}
+.pf-thumb video:not([src=""]){opacity:0;transition:opacity .4s}
+.pf-item:hover .pf-thumb video:not([src=""]){opacity:1}
+.pf-play{
+  position:absolute;z-index:2;
+  width:52px;height:52px;border-radius:50%;
+  background:rgba(255,255,255,.15);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  border:1.5px solid rgba(255,255,255,.25);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transform:scale(.85);
+  transition:all .3s cubic-bezier(.25,.1,.25,1);
+  cursor:pointer;
+}
+.pf-item:hover .pf-play{opacity:1;transform:scale(1)}
+.pf-play svg{margin-left:3px}
 .pf-num{
   font-family:var(--en);font-size:72px;font-weight:700;
   color:rgba(255,255,255,.04);
 }
+/* ── VIDEO MODAL ── */
+.modal{
+  position:fixed;inset:0;z-index:9999;
+  background:rgba(0,0,0,.88);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  display:none;align-items:center;justify-content:center;
+  padding:40px;
+  opacity:0;transition:opacity .3s;
+}
+.modal.open{display:flex;opacity:1}
+.modal-inner{
+  position:relative;width:100%;max-width:900px;
+  aspect-ratio:16/9;background:#000;border-radius:12px;
+  overflow:hidden;
+}
+.modal-inner video,.modal-inner iframe{
+  width:100%;height:100%;border:none;
+}
+.modal-close{
+  position:absolute;top:16px;right:16px;z-index:2;
+  width:36px;height:36px;border-radius:50%;
+  background:rgba(255,255,255,.12);border:none;
+  color:#fff;font-size:18px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .2s;
+}
+.modal-close:hover{background:rgba(255,255,255,.24)}
 .pf-bd{padding:24px 28px 28px}
 .pf-cat{font-size:12px;color:var(--blue);font-weight:500;margin-bottom:6px}
 .pf-title{font-size:19px;font-weight:600;letter-spacing:-.01em;margin-bottom:8px;color:var(--white)}
@@ -336,7 +386,7 @@ footer{
 
 <nav>
   <div class="nav-in">
-    <div class="nav-logo">【你的名字】</div>
+    <div class="nav-logo">崔翔宇</div>
     <ul class="nav-links">
       <li><a href="#about">关于</a></li>
       <li><a href="#work">作品</a></li>
@@ -350,10 +400,10 @@ footer{
 <!-- ████ HERO ████ -->
 <section class="hero">
   <h1>
-    【你的身份/职业】。<br>
-    <span class="thin">【一句副标题】。</span>
+    视频创作者。<br>
+    <span class="thin">也是效率工具人。</span>
   </h1>
-  <p class="tagline">【一句话简介，例如：X年内容经验。用 AI 重新定义视频生产。】</p>
+  <p class="tagline">8年内容经验。用 AI 重新定义视频生产。</p>
   <div class="cta">
     <a href="#work">看看作品 <span>›</span></a>
     <a href="#contact">联系我 <span>›</span></a>
@@ -365,24 +415,28 @@ footer{
   <div class="block-in">
     <div class="about-wrap rv">
       <div class="about-photo">
-        <span>【替换为个人照片】</span>
+        <span>个人照片</span>
       </div>
       <div class="about-text">
         <p>
-          【关于我 · 第一段：你是谁，做什么方向。例如：我是一个<strong>视频内容全链路创作者</strong>。】
+          我是一个<strong>视频内容全链路创作者</strong>。
+          从脚本到剪辑到分发，从0到1独立完成。
         </p>
         <p>
-          【关于我 · 第二段：过去的核心成果。例如：过去X年，<strong>独立操盘XX账号</strong>，建立了一套XX体系。】
+          过去4年半，<strong>独立操盘百万粉丝动漫IP抖音账号</strong>，
+          建立了一套从内容生产到数据复盘的完整体系。
         </p>
         <p>
-          【关于我 · 第三段：现在在做什么/未来方向。】
+          现在，我在用 AI 重新思考视频怎么做——
+          自建了一套从 AI 生成素材到自动化剪辑合成的完整 pipeline，
+          让一个人也能高效产出专业水准的短视频。
         </p>
         <div class="about-pills">
-          <span class="pill">【标签1】</span>
-          <span class="pill">【标签2】</span>
-          <span class="pill">【标签3】</span>
-          <span class="pill">【标签4】</span>
-          <span class="pill">【标签5】</span>
+          <span class="pill">短视频运营</span>
+          <span class="pill">AI视频生成</span>
+          <span class="pill">后期制作</span>
+          <span class="pill">内容策划</span>
+          <span class="pill">自动化流程</span>
         </div>
       </div>
     </div>
@@ -393,27 +447,27 @@ footer{
 <section class="block light">
   <div class="block-in">
     <h2 class="block-headline rv">核心能力。</h2>
-    <p class="block-sub rv" style="color:var(--grey)">【这部分的副标题】</p>
+    <p class="block-sub rv" style="color:var(--grey)">不只是会剪视频的人。</p>
     <div class="str-grid rv">
       <div class="str-card">
         <span class="str-icon">🎬</span>
-        <h3>【能力1标题】</h3>
-        <p>【能力1描述】</p>
+        <h3>全链路执行</h3>
+        <p>选题、脚本、制作、发布、复盘。端到端独立交付，不需要别人帮你把关每一步。</p>
       </div>
       <div class="str-card">
         <span class="str-icon">📐</span>
-        <h3>【能力2标题】</h3>
-        <p>【能力2描述】</p>
+        <h3>内容判断力</h3>
+        <p>什么选题能火、什么内容安全。在平台规则和用户心理之间找到最大公约数。</p>
       </div>
       <div class="str-card">
         <span class="str-icon">⚡</span>
-        <h3>【能力3标题】</h3>
-        <p>【能力3描述】</p>
+        <h3>AI 生产力</h3>
+        <p>AI 视频生成 + 自动化剪辑 pipeline。重复劳动交给机器，精力留给创意。</p>
       </div>
       <div class="str-card">
         <span class="str-icon">💰</span>
-        <h3>【能力4标题】</h3>
-        <p>【能力4描述】</p>
+        <h3>商业化思维</h3>
+        <p>理解流量到变现的完整链路。平台分成、付费内容、带货、卖方法论，都有实战。</p>
       </div>
     </div>
   </div>
@@ -423,74 +477,104 @@ footer{
 <section class="block dark" id="work">
   <div class="block-in">
     <h2 class="block-headline rv">精选作品。</h2>
-    <p class="block-sub rv">【这部分的副标题】</p>
+    <p class="block-sub rv">每一个项目都是从 0 到 1。</p>
 
     <div class="pf-filters rv">
       <button class="pf-btn on" onclick="pf('all',this)">全部</button>
-      <button class="pf-btn" onclick="pf('dy',this)">【分类1】</button>
-      <button class="pf-btn" onclick="pf('ai',this)">【分类2】</button>
-      <button class="pf-btn" onclick="pf('og',this)">【分类3】</button>
+      <button class="pf-btn" onclick="pf('dy',this)">抖音运营</button>
+      <button class="pf-btn" onclick="pf('ai',this)">AI视频</button>
+      <button class="pf-btn" onclick="pf('og',this)">原创内容</button>
     </div>
 
     <div class="pf-grid rv" id="pfGrid">
 
-      <div class="pf-item" data-c="dy">
-        <div class="pf-thumb"><span class="pf-num">01</span></div>
+      <!-- ✦ 方式一：封面图 + 点击弹窗播放本地视频 -->
+      <div class="pf-item" data-c="dy" onclick="openVideo('local','videos/demo1.mp4')">
+        <div class="pf-thumb">
+          <!-- 把 src 换成你的封面截图路径 -->
+          <img src="" alt="">
+          <span class="pf-num">01</span>
+          <div class="pf-play"><svg width="18" height="18" fill="white" viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21"/></svg></div>
+        </div>
         <div class="pf-bd">
-          <div class="pf-cat">【分类1】</div>
-          <div class="pf-title">【作品1标题】</div>
-          <div class="pf-desc">【作品1简介，一句话说清做了什么】</div>
-          <div class="pf-stats"><span class="pf-stat">【指标名】 <b>【数值】</b></span><span class="pf-stat">【指标名】 <b>【数值】</b></span></div>
+          <div class="pf-cat">抖音运营</div>
+          <div class="pf-title">动漫IP账号独立运营</div>
+          <div class="pf-desc">头部动漫IP抖音号全链路运营，建立标准化内容生产流程与数据驱动选题机制</div>
+          <div class="pf-stats"><span class="pf-stat">粉丝 <b>100w+</b></span><span class="pf-stat">峰值 <b>500w播放</b></span></div>
         </div>
       </div>
 
-      <div class="pf-item" data-c="ai">
-        <div class="pf-thumb"><span class="pf-num">02</span></div>
+      <!-- ✦ 方式二：封面图 + hover自动预览（短视频悬停预览效果） -->
+      <div class="pf-item" data-c="ai" onclick="openVideo('local','videos/demo2.mp4')">
+        <div class="pf-thumb">
+          <!-- img = 静态封面，video = hover时自动播放的预览 -->
+          <img src="" alt="">
+          <video src="" muted loop playsinline preload="none"></video>
+          <span class="pf-num">02</span>
+          <div class="pf-play"><svg width="18" height="18" fill="white" viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21"/></svg></div>
+        </div>
         <div class="pf-bd">
-          <div class="pf-cat">【分类2】</div>
-          <div class="pf-title">【作品2标题】</div>
-          <div class="pf-desc">【作品2简介】</div>
-          <div class="pf-stats"><span class="pf-stat">【指标名】 <b>【数值】</b></span><span class="pf-stat">【指标名】 <b>【数值】</b></span></div>
+          <div class="pf-cat">AI视频</div>
+          <div class="pf-title">AI自动化视频生产管线</div>
+          <div class="pf-desc">分镜表→AI视频生成→自动剪辑合成，整合 Veo、Seedance 模型的完整 pipeline</div>
+          <div class="pf-stats"><span class="pf-stat">效率 <b>5x</b></span><span class="pf-stat">成本 <b>-60%</b></span></div>
         </div>
       </div>
 
-      <div class="pf-item" data-c="og">
-        <div class="pf-thumb"><span class="pf-num">03</span></div>
+      <!-- ✦ 方式三：点击跳转外部链接（适用于抖音等不支持iframe的平台） -->
+      <div class="pf-item" data-c="og" onclick="window.open('https://www.douyin.com/video/你的视频ID','_blank')">
+        <div class="pf-thumb">
+          <img src="" alt="">
+          <span class="pf-num">03</span>
+          <div class="pf-play"><svg width="18" height="18" fill="white" viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21"/></svg></div>
+        </div>
         <div class="pf-bd">
-          <div class="pf-cat">【分类3】</div>
-          <div class="pf-title">【作品3标题】</div>
-          <div class="pf-desc">【作品3简介】</div>
-          <div class="pf-stats"><span class="pf-stat">【指标名】 <b>【数值】</b></span></div>
+          <div class="pf-cat">原创内容</div>
+          <div class="pf-title">认知提升内容品牌</div>
+          <div class="pf-desc">选题系统 + 脚本框架 + 视觉体系，聚焦经济学与人性认知的独立内容品牌</div>
+          <div class="pf-stats"><span class="pf-stat">定位 <b>独立IP</b></span></div>
         </div>
       </div>
 
-      <div class="pf-item" data-c="ai">
-        <div class="pf-thumb"><span class="pf-num">04</span></div>
+      <div class="pf-item" data-c="ai" onclick="openVideo('local','videos/demo4.mp4')">
+        <div class="pf-thumb">
+          <img src="" alt="">
+          <span class="pf-num">04</span>
+          <div class="pf-play"><svg width="18" height="18" fill="white" viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21"/></svg></div>
+        </div>
         <div class="pf-bd">
-          <div class="pf-cat">【分类2】</div>
-          <div class="pf-title">【作品4标题】</div>
-          <div class="pf-desc">【作品4简介】</div>
-          <div class="pf-stats"><span class="pf-stat">【指标名】 <b>【数值】</b></span></div>
+          <div class="pf-cat">AI视频</div>
+          <div class="pf-title">AI叙事短片</div>
+          <div class="pf-desc">AI 生成画面 × 情感叙事，探索 AI 视频在故事讲述上的表现力</div>
+          <div class="pf-stats"><span class="pf-stat">方向 <b>实验性</b></span></div>
         </div>
       </div>
 
-      <div class="pf-item" data-c="dy">
-        <div class="pf-thumb"><span class="pf-num">05</span></div>
+      <div class="pf-item" data-c="dy" onclick="openVideo('local','videos/demo5.mp4')">
+        <div class="pf-thumb">
+          <img src="" alt="">
+          <span class="pf-num">05</span>
+          <div class="pf-play"><svg width="18" height="18" fill="white" viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21"/></svg></div>
+        </div>
         <div class="pf-bd">
-          <div class="pf-cat">【分类1】</div>
-          <div class="pf-title">【作品5标题】</div>
-          <div class="pf-desc">【作品5简介】</div>
-          <div class="pf-stats"><span class="pf-stat">【指标名】 <b>【数值】</b></span></div>
+          <div class="pf-cat">抖音运营</div>
+          <div class="pf-title">数据驱动内容增长</div>
+          <div class="pf-desc">飞书多维表格搭建数据追踪系统，选题→发布→复盘的完整数据闭环</div>
+          <div class="pf-stats"><span class="pf-stat">完播率 <b>+35%</b></span></div>
         </div>
       </div>
 
-      <div class="pf-item" data-c="og">
-        <div class="pf-thumb"><span class="pf-num">06</span></div>
+      <div class="pf-item" data-c="og" onclick="openVideo('local','videos/demo6.mp4')">
+        <div class="pf-thumb">
+          <img src="" alt="">
+          <span class="pf-num">06</span>
+          <div class="pf-play"><svg width="18" height="18" fill="white" viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21"/></svg></div>
+        </div>
         <div class="pf-bd">
-          <div class="pf-cat">【分类3】</div>
-          <div class="pf-title">【作品6标题】</div>
-          <div class="pf-desc">【作品6简介】</div>
-          <div class="pf-stats"><span class="pf-stat">【指标名】 <b>【数值】</b></span></div>
+          <div class="pf-cat">原创内容</div>
+          <div class="pf-title">认知翻转写作框架</div>
+          <div class="pf-desc">四层结构，只用可验证真实案例与数据，拒绝虚构的深度内容方法论</div>
+          <div class="pf-stats"><span class="pf-stat">体系 <b>可复用</b></span></div>
         </div>
       </div>
 
@@ -506,33 +590,33 @@ footer{
     <div class="sk-wrap rv">
       <div>
         <div class="sk-group">
-          <h4>【技能分组1，例如：视频制作】</h4>
-          <div class="sk-row"><span class="sk-name">【技能名】</span><div class="sk-dots"><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i></div></div>
-          <div class="sk-row"><span class="sk-name">【技能名】</span><div class="sk-dots"><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot"></i></div></div>
-          <div class="sk-row"><span class="sk-name">【技能名】</span><div class="sk-dots"><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot"></i></div></div>
-          <div class="sk-row"><span class="sk-name">【技能名】</span><div class="sk-dots"><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i></div></div>
-          <div class="sk-row"><span class="sk-name">【技能名】</span><div class="sk-dots"><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot"></i><i class="sk-dot"></i></div></div>
+          <h4>视频制作</h4>
+          <div class="sk-row"><span class="sk-name">Premiere Pro</span><div class="sk-dots"><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i></div></div>
+          <div class="sk-row"><span class="sk-name">After Effects</span><div class="sk-dots"><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot"></i></div></div>
+          <div class="sk-row"><span class="sk-name">Final Cut Pro</span><div class="sk-dots"><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot"></i></div></div>
+          <div class="sk-row"><span class="sk-name">剪映 / CapCut</span><div class="sk-dots"><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i></div></div>
+          <div class="sk-row"><span class="sk-name">DaVinci 调色</span><div class="sk-dots"><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot"></i><i class="sk-dot"></i></div></div>
         </div>
         <div class="sk-group" style="margin-top:40px">
-          <h4>【技能分组2】</h4>
-          <div class="sk-row"><span class="sk-name">【技能名】</span><div class="sk-dots"><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i></div></div>
-          <div class="sk-row"><span class="sk-name">【技能名】</span><div class="sk-dots"><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot"></i></div></div>
-          <div class="sk-row"><span class="sk-name">【技能名】</span><div class="sk-dots"><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot"></i></div></div>
+          <h4>内容运营</h4>
+          <div class="sk-row"><span class="sk-name">抖音 / 短视频运营</span><div class="sk-dots"><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i></div></div>
+          <div class="sk-row"><span class="sk-name">选题策划 & 脚本</span><div class="sk-dots"><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot"></i></div></div>
+          <div class="sk-row"><span class="sk-name">数据分析 & 复盘</span><div class="sk-dots"><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot"></i></div></div>
         </div>
       </div>
       <div>
         <div class="sk-group">
-          <h4>【技能分组3】</h4>
-          <div class="sk-row"><span class="sk-name">【技能名】</span><div class="sk-dots"><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot"></i></div></div>
-          <div class="sk-row"><span class="sk-name">【技能名】</span><div class="sk-dots"><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot"></i></div></div>
-          <div class="sk-row"><span class="sk-name">【技能名】</span><div class="sk-dots"><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot"></i></div></div>
-          <div class="sk-row"><span class="sk-name">【技能名】</span><div class="sk-dots"><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i></div></div>
+          <h4>AI 工具链</h4>
+          <div class="sk-row"><span class="sk-name">Veo / Seedance</span><div class="sk-dots"><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot"></i></div></div>
+          <div class="sk-row"><span class="sk-name">Seedream 图像</span><div class="sk-dots"><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot"></i></div></div>
+          <div class="sk-row"><span class="sk-name">ElevenLabs 语音</span><div class="sk-dots"><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot"></i></div></div>
+          <div class="sk-row"><span class="sk-name">LLM Prompting</span><div class="sk-dots"><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i></div></div>
         </div>
         <div class="sk-group" style="margin-top:40px">
-          <h4>【技能分组4】</h4>
-          <div class="sk-row"><span class="sk-name">【技能名】</span><div class="sk-dots"><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot"></i><i class="sk-dot"></i></div></div>
-          <div class="sk-row"><span class="sk-name">【技能名】</span><div class="sk-dots"><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot"></i><i class="sk-dot"></i></div></div>
-          <div class="sk-row"><span class="sk-name">【技能名】</span><div class="sk-dots"><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot"></i><i class="sk-dot"></i></div></div>
+          <h4>技术 & 开发</h4>
+          <div class="sk-row"><span class="sk-name">Python 自动化</span><div class="sk-dots"><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot"></i><i class="sk-dot"></i></div></div>
+          <div class="sk-row"><span class="sk-name">Remotion 动态视频</span><div class="sk-dots"><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot"></i><i class="sk-dot"></i></div></div>
+          <div class="sk-row"><span class="sk-name">API & 工作流</span><div class="sk-dots"><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot on"></i><i class="sk-dot"></i><i class="sk-dot"></i></div></div>
         </div>
       </div>
     </div>
@@ -547,27 +631,27 @@ footer{
     <div class="exp-wrap rv">
 
       <div class="exp-item">
-        <div class="exp-time">【起始年】 — 至今</div>
-        <div class="exp-role">【职位/角色1】</div>
-        <div class="exp-co">【公司/形式，例如：自由职业】</div>
-        <div class="exp-desc">【这段经历做了什么，1-2句话】</div>
-        <div class="exp-tags"><span class="exp-tag">【标签】</span><span class="exp-tag">【标签】</span><span class="exp-tag">【标签】</span></div>
+        <div class="exp-time">2024 — 至今</div>
+        <div class="exp-role">独立内容创作者</div>
+        <div class="exp-co">自由职业</div>
+        <div class="exp-desc">搭建 AI 驱动的短视频自动化生产管线，覆盖 AI 视频生成、自动化剪辑合成、动态花字等环节。同步建设认知提升类内容品牌。</div>
+        <div class="exp-tags"><span class="exp-tag">AI视频</span><span class="exp-tag">Pipeline</span><span class="exp-tag">品牌</span></div>
       </div>
 
       <div class="exp-item">
-        <div class="exp-time">【起始年】 — 【结束年】</div>
-        <div class="exp-role">【职位/角色2】</div>
-        <div class="exp-co">【公司名】 · 【城市】</div>
-        <div class="exp-desc">【这段经历做了什么】</div>
-        <div class="exp-tags"><span class="exp-tag">【标签】</span><span class="exp-tag">【标签】</span><span class="exp-tag">【标签】</span><span class="exp-tag">【时长】</span></div>
+        <div class="exp-time">20XX — 2024</div>
+        <div class="exp-role">新媒体运营 / 视频制作人</div>
+        <div class="exp-co">某科技公司 · 北京</div>
+        <div class="exp-desc">独立负责头部动漫IP抖音账号全链路内容生产。选题策划、脚本撰写、视频剪辑、数据分析、平台运营。建立标准化生产流程与数据驱动选题机制。</div>
+        <div class="exp-tags"><span class="exp-tag">抖音运营</span><span class="exp-tag">动漫IP</span><span class="exp-tag">数据驱动</span><span class="exp-tag">4.5年</span></div>
       </div>
 
       <div class="exp-item">
-        <div class="exp-time">【起始年】 — 【结束年】</div>
-        <div class="exp-role">【职位/角色3】</div>
-        <div class="exp-co">【公司名】 · 【城市】</div>
-        <div class="exp-desc">【这段经历做了什么】</div>
-        <div class="exp-tags"><span class="exp-tag">【标签】</span><span class="exp-tag">【标签】</span><span class="exp-tag">【标签】</span></div>
+        <div class="exp-time">2017 — 20XX</div>
+        <div class="exp-role">视频后期制作</div>
+        <div class="exp-co">某生物科技公司 · 北京</div>
+        <div class="exp-desc">企业宣传、产品视频后期制作。积累 Premiere Pro、After Effects 扎实功底，同时参与原创插画与动画内容制作。</div>
+        <div class="exp-tags"><span class="exp-tag">后期</span><span class="exp-tag">动效</span><span class="exp-tag">插画</span></div>
       </div>
 
     </div>
@@ -578,27 +662,34 @@ footer{
 <section class="block light" id="contact">
   <div class="block-in">
     <h2 class="block-headline rv">联系我。</h2>
-    <p class="block-sub rv" style="color:var(--grey)">【你想找的机会/合作方向】</p>
+    <p class="block-sub rv" style="color:var(--grey)">正在寻找新媒体运营、AI视频内容制作方向的机会。</p>
     <div class="ct-wrap rv">
-      <div class="ct-row"><span class="ct-label">邮箱</span><span class="ct-val link">【填写邮箱】</span></div>
-      <div class="ct-row"><span class="ct-label">电话</span><span class="ct-val">【填写电话，不公开可删除此行】</span></div>
-      <div class="ct-row"><span class="ct-label">微信</span><span class="ct-val">【填写微信号】</span></div>
-      <div class="ct-row"><span class="ct-label">抖音</span><span class="ct-val link">【填写抖音号】</span></div>
+      <div class="ct-row"><span class="ct-label">邮箱</span><span class="ct-val link">your@email.com</span></div>
+      <div class="ct-row"><span class="ct-label">电话</span><span class="ct-val">138-xxxx-xxxx</span></div>
+      <div class="ct-row"><span class="ct-label">微信</span><span class="ct-val">your_wechat_id</span></div>
+      <div class="ct-row"><span class="ct-label">抖音</span><span class="ct-val link">@your_douyin_id</span></div>
     </div>
   </div>
 </section>
 
-<footer>© 2026 【你的名字】</footer>
+<footer>© 2026 崔翔宇</footer>
+
+<!-- VIDEO MODAL -->
+<div class="modal" id="vModal" onclick="closeVideo(event)">
+  <div class="modal-inner" id="vBox">
+    <button class="modal-close" onclick="closeVideo(event,true)">✕</button>
+  </div>
+</div>
 
 <script>
-new IntersectionObserver(es=>{
-  es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('v')})
-},{threshold:.1}).observe(document.createDocumentFragment());
+// Reveal
 document.querySelectorAll('.rv').forEach(el=>{
   new IntersectionObserver(es=>{
-    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');e.target.io&&e.target.io.unobserve(e.target)}})
+    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v')}})
   },{threshold:.1}).observe(el);
 });
+
+// Filter
 function pf(c,b){
   document.querySelectorAll('.pf-btn').forEach(x=>x.classList.remove('on'));
   b.classList.add('on');
@@ -606,6 +697,59 @@ function pf(c,b){
     x.style.display=(c==='all'||x.dataset.c===c)?'':'none'
   });
 }
+
+// Hover preview: auto-play video on hover
+document.querySelectorAll('.pf-item').forEach(card=>{
+  const vid=card.querySelector('.pf-thumb video');
+  if(!vid||!vid.src) return;
+  card.addEventListener('mouseenter',()=>{try{vid.play()}catch(e){}});
+  card.addEventListener('mouseleave',()=>{vid.pause();vid.currentTime=0});
+});
+
+// Video modal
+const modal=document.getElementById('vModal');
+const vBox=document.getElementById('vBox');
+
+function openVideo(type,src){
+  // 清空旧内容（保留关闭按钮）
+  const close=vBox.querySelector('.modal-close');
+  vBox.innerHTML='';
+  vBox.appendChild(close);
+
+  if(type==='local'){
+    // 本地视频文件
+    const v=document.createElement('video');
+    v.src=src; v.controls=true; v.autoplay=true;
+    v.style.cssText='width:100%;height:100%;object-fit:contain';
+    vBox.appendChild(v);
+  } else if(type==='iframe'){
+    // 嵌入式播放（B站等支持iframe的平台）
+    const f=document.createElement('iframe');
+    f.src=src; f.allow='autoplay;fullscreen';
+    f.style.cssText='width:100%;height:100%;border:none';
+    vBox.appendChild(f);
+  }
+
+  modal.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeVideo(e,force){
+  if(force||e.target===modal){
+    modal.classList.remove('open');
+    document.body.style.overflow='';
+    // 停止播放
+    const v=vBox.querySelector('video');
+    if(v){v.pause();v.src=''}
+    const f=vBox.querySelector('iframe');
+    if(f) f.src='';
+  }
+}
+
+// ESC 关闭
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape') closeVideo(e,true);
+});
 </script>
 
 </body>
