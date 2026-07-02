@@ -52,6 +52,17 @@ nav{
   text-decoration:none;transition:color .25s;
 }
 .nav-links a:hover{color:rgba(255,255,255,.92)}
+/* 简历下载按钮：右上角胶囊按钮，手机端也保留显示 */
+.nav-right{display:flex;align-items:center;gap:28px}
+.nav-resume{
+  font-size:12px;color:rgba(255,255,255,.92);
+  text-decoration:none;white-space:nowrap;
+  padding:5px 14px;
+  border:1px solid rgba(255,255,255,.3);
+  border-radius:980px;
+  transition:background .25s,border-color .25s;
+}
+.nav-resume:hover{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.5)}
 
 /* ── HERO (dark) ── */
 .hero{
@@ -391,13 +402,16 @@ footer{
 <nav>
   <div class="nav-in">
     <div class="nav-logo">崔相宇</div>
-    <ul class="nav-links">
-      <li><a href="#about">关于</a></li>
-      <li><a href="#work">作品</a></li>
-      <li><a href="#skills">技能</a></li>
-      <li><a href="#exp">经历</a></li>
-      <li><a href="#contact">联系</a></li>
-    </ul>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#about">关于</a></li>
+        <li><a href="#work">作品</a></li>
+        <li><a href="#skills">技能</a></li>
+        <li><a href="#exp">经历</a></li>
+        <li><a href="#contact">联系</a></li>
+      </ul>
+      <a class="nav-resume" href="resume.pdf" download="崔相宇-新媒体运营-简历.pdf">简历 ↓</a>
+    </div>
   </div>
 </nav>
 
